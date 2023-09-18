@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Task
+Containerise the react app using docker and docker image  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Let's Start
+### I'm using AWS Instance ubuntu 22.04
+## Follow These steps
+Make sure u have port 3000 aceesible on your instance or local machine 
+```bash
+sudo apt update -y && sudo apt upgrade -y
+```
+![update & upgrade ](https://github.com/offender6969/aesthiesia-demo/blob/main/images/1%20update%20the%20server.png)  
 
-## Available Scripts
+### Install Docker
 
-In the project directory, you can run:
+```bash
+sudo snap install docker.io -y
+```
+![dockerinstall](https://github.com/offender6969/aesthiesia-demo/blob/main/images/2installing%20docker.png)  
+### Clone React App Source Code
+follow this link for react app ** [Source Code](https://github.com/Aesthisia/Assignment-L1-DO)  
+```bash
+git clone https://github.com/Aesthisia/Assignment-L1-DO
+```  
+![gitcloneimg](https://github.com/offender6969/aesthiesia-demo/blob/main/images/3%20clone%20the%20repo%20and%20move%20the%20dir%20to%20home%20dir.png)  
 
-### `npm start`
+```bash
+ls
+```
+```bash
+cd Assignment-L1-DO-Aesthisia
+```
+### its Optional (i just did this to take source code speratly   )
+```bash
+mv aesthisia-demo ../
+```
+```bash
+cd ..
+```
+### Go to inside aesthisia-demo directory
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+cd aesthisia-demo
+```
+### make Docker file inside 
+```bash
+nano  Dockerfile
+```
+Write Docker File & You Can also paste these code  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+FROM node:16
+WORKDIR /aesthisia-demo
+COPY package.json .
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm","start"]
 
-### `npm test`
+```  
+![dockerfile](https://github.com/offender6969/aesthiesia-demo/blob/main/images/5%20building%20the%20docker%20image.png)  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### build Docker File 
+```bash
+docker build -t react-img .
+```  
+![dockerbuild](https://github.com/offender6969/aesthiesia-demo/blob/main/images/6%20building%20the%20container%20from%20image.png)  
 
-### `npm run build`
+```bash
+docker run -d -p 3000:3000 (your image name) 
+```
+![app](https://github.com/offender6969/aesthiesia-demo/blob/main/images/7%20WELCOME%20TO%20AESTHISIA.png)  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### enjoy 
+yourIP:3000
