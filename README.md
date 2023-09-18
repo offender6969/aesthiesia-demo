@@ -1,6 +1,11 @@
 # Task
 Containerise the react app using docker and docker image  
 
+FINAL OUTPUT 
+```bash
+18.223.30.11
+```
+
 # Let's Start
 ### I'm using AWS Instance ubuntu 22.04
 ## Follow These steps
