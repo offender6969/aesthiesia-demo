@@ -1,10 +1,8 @@
 # Task
 Containerise the react app using docker and docker image  
 
-FINAL OUTPUT 
-```bash
-18.223.30.11
-```
+[Final output](http://18.223.30.11:3000/)
+
 
 # Let's Start
 ### I'm using AWS Instance ubuntu 22.04
@@ -75,5 +73,4 @@ docker run -d -p 3000:3000 (your image name)
 ```
 ![app](https://github.com/offender6969/aesthiesia-demo/blob/main/images/7%20WELCOME%20TO%20AESTHISIA.png)  
 
-### enjoy 
-yourIP:3000
+[Final output](http://18.223.30.11:3000/)
